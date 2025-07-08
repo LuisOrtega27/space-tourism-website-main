@@ -1,58 +1,51 @@
 import { NavLink } from "react-router";
-import IconLogo from "../assets/IconLogo";
-
-import IconMenuOpen from "../assets/menu/IconMenuOpen";
 import { useState } from "react";
+
+import IconLogo from "../assets/IconLogo";
+import IconMenuOpen from "../assets/menu/IconMenuOpen";
 import IconMenuClose from "../assets/menu/IconMenuClose";
 
 const MenuMain = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="grid grid-cols-2">
-      <IconLogo />
+    <header className="headerMain">
+      <div className="headerMain__iconContainer">
+        <IconLogo />
+      </div>
 
-      <hr className="hidden md:block" />
+      <hr className="hidden lg:block" />
 
-      <nav className="text-end grid align-middle justify-end">
-        <button className="z-20" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+      <nav className="menuMain_containerNav">
+        <button
+          className={`md:hidden z-20`}
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+        >
           {isMenuOpen ? <IconMenuClose /> : <IconMenuOpen />}
         </button>
 
         <ul
-          className={` 
-            ${isMenuOpen ? "block" : "hidden"} 
-            absolute top-0 right-0 z-10 
-            flex flex-col gap-8
-            text-start text-base
-            pl-8 pt-32 
-            min-h-screen w-8/12
-            overflow-hidden
-            backdrop-blur-xs 
-        `}
+          className={`${
+            isMenuOpen ? "block md:flex" : "hidden md:flex"
+          } menuMain`}
         >
-          <li className="w-full">
-            <NavLink
-              to={"/"}
-              className={
-                "w-full p-2 inline-block  bg-white/10 border-r-4 border-white"
-              }
-            >
-              <span className="font-bold">00</span> HOME
+          <li>
+            <NavLink to={"/"} className={`menuMain__item`}>
+              <span className="font-bold inline md:hidden">00</span> HOME
             </NavLink>
           </li>
-          <li className="w-full">
-            <NavLink to={"destination"}>
+          <li>
+            <NavLink to={"destination"} className={`menuMain__item`}>
               <span className="font-bold">01</span> DESTINATION
             </NavLink>
           </li>
-          <li className="w-full">
-            <NavLink to={"crew"}>
+          <li>
+            <NavLink to={"crew"} className={`menuMain__item`}>
               <span className="font-bold">02</span> CREW
             </NavLink>
           </li>
-          <li className="w-full">
-            <NavLink to={"technology"}>
+          <li>
+            <NavLink to={"technology"} className={`menuMain__item`}>
               <span className="font-bold">03</span> TECHNOLOGY
             </NavLink>
           </li>

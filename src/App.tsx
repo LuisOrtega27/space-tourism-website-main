@@ -9,15 +9,15 @@ import MenuMain from "./components/MenuMain";
 function App() {
   return (
     <main
-      className="
+      className={`
       bg-[url('../assets/home/background-home-mobile.jpg')] 
       md:bg-[url('../assets/home/background-home-tablet.jpg')] 
       lg:bg-[url('../assets/home/background-home-desktop.jpg')] 
       bg-cover
       bg-center
       text-white-404 
-      min-h-screen p-6 
-    "
+      min-h-screen
+    `}
     >
       <BrowserRouter>
         <MenuMain />
