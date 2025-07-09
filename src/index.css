@@ -1,4 +1,5 @@
 @import "tailwindcss";
+
 /* @tailwind base; */
 /* @tailwind utilities; */
 /* @import "tailwindcss/preflight"; */
@@ -6,52 +7,4 @@
 @theme {
   --color-white-404: #d0d6f9;
   --color-gray-97: #979797;
-}
-
-@layer components {
-  .headerMain {
-    @apply grid grid-cols-2 
-    md:flex  
-    align-middle justify-center
-    text-white
-    text-sm
-    px-5 md:px-0 pt-10;
-  }
-
-  .headerMain__iconContainer {
-    @apply flex flex-col justify-center align-middle md:px-10;
-  }
-
-  .menuMain_containerNav {
-    @apply md:w-full
-    grid md:block 
-    align-middle justify-end
-    text-end;
-  }
-
-  .menuMain {
-    @apply flex-col gap-8 md:flex-row md:gap-12 md:justify-center
-      absolute md:static 
-      top-0 right-0 
-      min-h-screen md:min-h-auto 
-      w-8/12 md:w-full 
-      text-start
-      z-10 
-      pl-8 pt-32 md:p-0 md:pl-20
-      backdrop-blur-xs
-      bg-white/10;
-  }
-
-  .menuMain__item {
-    @apply inline-block 
-    w-full md:w-max 
-    p-2 md:py-8
-    border-r-4 
-    border-transparent
-    md:border-r-0 md:border-b-2;
-  }
-
-  .menuMain__item.active {
-    @apply bg-white/10 border-white md:bg-transparent;
-  }
 }

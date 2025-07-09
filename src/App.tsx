@@ -4,7 +4,7 @@ import Home from "./pages/home";
 import Destination from "./pages/Destination";
 import Crew from "./pages/Crew";
 import Technology from "./pages/Technology";
-import MenuMain from "./components/MenuMain";
+import MenuMain from "./components/menu_main/MenuMain";
 
 function App() {
   return (
