@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+@import "../index.css";
+
+@layer components {
+  .home {
+    @apply flex flex-col gap-6 
+    p-12 md:p-32 
+    text-white;
+  }
+  .home__subTitle {
+    @apply text-center text-figma-blue-300 uppercase md:text-2xl;
+  }
+  .home__title {
+    @apply mb-6 text-center text-7xl md:text-[144px] uppercase;
+  }
+  .home__text {
+    @apply text-sm md:text-base md:text-center;
+  }
+  .home__buttonContainer {
+    @apply px-20 py-28 text-center;
+  }
+  .home__button {
+    @apply text-lg md:text-3xl
+    text-black hover:text-figma-blue-900 
+    uppercase
+    h-36 md:h-72 aspect-square 
+    bg-white 
+    rounded-full
+    ring-white/50 hover:ring-50
+    cursor-pointer;
+  }
+}

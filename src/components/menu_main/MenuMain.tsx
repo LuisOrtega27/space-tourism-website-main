@@ -34,26 +34,40 @@ const MenuMain = () => {
           }`}
         >
           <li>
-            <NavLink to={"/"} className={styles.menuMain__item}>
-              <span className="font-bold inline md:hidden lg:inline">00</span>
+            <NavLink
+              to={"/"}
+              className={styles.menuMain__item + " menuMainItem"}
+            >
+              <span className="font-bold mr-2 inline md:hidden lg:inline">
+                00
+              </span>
               HOME
             </NavLink>
           </li>
           <li>
-            <NavLink to={"destination"} className={styles.menuMain__item}>
-              <span className="font-bold">01</span>
+            <NavLink
+              to={"destination"}
+              className={styles.menuMain__item + " menuMainItem"}
+            >
+              <span className="font-bold mr-2">01</span>
               DESTINATION
             </NavLink>
           </li>
           <li>
-            <NavLink to={"crew"} className={styles.menuMain__item}>
-              <span className="font-bold">02</span>
+            <NavLink
+              to={"crew"}
+              className={styles.menuMain__item + " menuMainItem"}
+            >
+              <span className="font-bold mr-2">02</span>
               CREW
             </NavLink>
           </li>
           <li>
-            <NavLink to={"technology"} className={styles.menuMain__item}>
-              <span className="font-bold">03</span>
+            <NavLink
+              to={"technology"}
+              className={styles.menuMain__item + " menuMainItem"}
+            >
+              <span className="font-bold mr-2">03</span>
               TECHNOLOGY
             </NavLink>
           </li>

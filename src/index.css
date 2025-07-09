@@ -1,10 +1,12 @@
 @import "tailwindcss";
 
-/* @tailwind base; */
-/* @tailwind utilities; */
-/* @import "tailwindcss/preflight"; */
-
 @theme {
-  --color-white-404: #d0d6f9;
+  --color-figma-blue-300: #d0d6f9;
+  --color-figma-blue-900: #0b0d17;
   --color-gray-97: #979797;
+}
+
+/* No supe como haer el efecto activo desde los modulos de css */
+.menuMainItem.active {
+  @apply bg-white/10 border-white md:bg-transparent;
 }
