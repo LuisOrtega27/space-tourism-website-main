@@ -13,6 +13,7 @@ function App() {
       bg-[url('../assets/home/background-home-mobile.jpg')] 
       md:bg-[url('../assets/home/background-home-tablet.jpg')] 
       lg:bg-[url('../assets/home/background-home-desktop.jpg')] 
+
       bg-cover
       bg-center
       text-white-404 

@@ -5,6 +5,7 @@
 
 @theme {
   --color-white-404: #d0d6f9;
+  --color-gray-97: #979797;
 }
 
 @layer components {
@@ -14,7 +15,7 @@
     align-middle justify-center
     text-white
     text-sm
-    px-5 md:px-0;
+    px-5 md:px-0 pt-10;
   }
 
   .headerMain__iconContainer {
@@ -29,7 +30,7 @@
   }
 
   .menuMain {
-    @apply md:flex md:gap-12 md:justify-center
+    @apply flex-col gap-8 md:flex-row md:gap-12 md:justify-center
       absolute md:static 
       top-0 right-0 
       min-h-screen md:min-h-auto 

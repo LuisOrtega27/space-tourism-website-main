@@ -14,7 +14,9 @@ const MenuMain = () => {
         <IconLogo />
       </div>
 
-      <hr className="hidden lg:block" />
+      <div className="hidden lg:flex flex-col justify-center w-full ">
+        <hr className="w-full text-gray-97 translate-x-8 z-20" />
+      </div>
 
       <nav className="menuMain_containerNav">
         <button
@@ -24,11 +26,7 @@ const MenuMain = () => {
           {isMenuOpen ? <IconMenuClose /> : <IconMenuOpen />}
         </button>
 
-        <ul
-          className={`${
-            isMenuOpen ? "block md:flex" : "hidden md:flex"
-          } menuMain`}
-        >
+        <ul className={`${isMenuOpen ? "flex" : "hidden md:flex"} menuMain`}>
           <li>
             <NavLink to={"/"} className={`menuMain__item`}>
               <span className="font-bold inline md:hidden">00</span> HOME
