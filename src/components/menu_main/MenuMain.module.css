@@ -42,6 +42,7 @@
       p-2 md:py-8
       border-r-4 
       border-transparent
-      md:border-r-0 md:border-b-2;
+      md:border-r-0 md:border-b-4
+      hover:border-white/50 hover:border-b-4;
   }
 }

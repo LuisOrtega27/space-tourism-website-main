@@ -4,25 +4,46 @@
 
 @layer components {
   .home {
-    @apply flex flex-col gap-6 
-    p-12 md:p-32 
-    text-white;
+    @apply flex flex-col lg:flex-row lg:flex-wrap
+    gap-6 
+    p-12 md:p-32 lg:pt-72 
+    text-white
+    lg:max-w-[1600px] lg:mx-auto;
   }
+
   .home__subTitle {
-    @apply text-center text-figma-blue-300 uppercase md:text-2xl;
+    @apply text-center lg:text-start
+    text-figma-blue-300 uppercase 
+    md:text-2xl 
+    lg:w-full;
   }
+
   .home__title {
-    @apply mb-6 text-center text-7xl md:text-[144px] uppercase;
+    @apply mb-6 lg:mb-0 
+    uppercase 
+    text-center lg:text-start
+    text-7xl md:text-[144px] 
+    lg:w-1/2 
+    lg:flex lg:flex-col lg:justify-center;
   }
+
   .home__text {
-    @apply text-sm md:text-base md:text-center;
+    @apply text-sm md:text-base 
+    md:text-center lg:text-start
+    lg:w-1/2 
+    lg:order-3;
   }
+
   .home__buttonContainer {
-    @apply px-20 py-28 text-center;
+    @apply px-20 py-28 lg:p-0
+    text-center 
+    lg:grow 
+    lg:order-2;
   }
+
   .home__button {
     @apply text-lg md:text-3xl
-    text-black hover:text-figma-blue-900 
+    text-black hover:text-figma-blue-900/50 
     uppercase
     h-36 md:h-72 aspect-square 
     bg-white 
