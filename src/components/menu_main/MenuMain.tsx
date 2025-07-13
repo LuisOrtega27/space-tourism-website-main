@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import IconLogo from "../../assets/IconLogo";
 import IconMenuOpen from "../../assets/menu/IconMenuOpen";
@@ -7,7 +7,12 @@ import IconMenuClose from "../../assets/menu/IconMenuClose";
 
 import styles from "./MenuMain.module.css";
 
+import { NavContext } from "../../App";
+import type { NavContextType } from "../../App";
+
 const MenuMain = () => {
+  const navContext = useContext(NavContext) as NavContextType;
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
@@ -37,6 +42,7 @@ const MenuMain = () => {
             <NavLink
               to={"/"}
               className={styles.menuMain__item + " menuMainItem"}
+              onClick={() => navContext.setNav("home")}
             >
               <span className="font-bold mr-2 inline md:hidden lg:inline">
                 00
@@ -48,6 +54,7 @@ const MenuMain = () => {
             <NavLink
               to={"destination"}
               className={styles.menuMain__item + " menuMainItem"}
+              onClick={() => navContext.setNav("destination")}
             >
               <span className="font-bold mr-2">01</span>
               DESTINATION
@@ -57,6 +64,7 @@ const MenuMain = () => {
             <NavLink
               to={"crew"}
               className={styles.menuMain__item + " menuMainItem"}
+              onClick={() => navContext.setNav("crew")}
             >
               <span className="font-bold mr-2">02</span>
               CREW
@@ -66,6 +74,7 @@ const MenuMain = () => {
             <NavLink
               to={"technology"}
               className={styles.menuMain__item + " menuMainItem"}
+              onClick={() => navContext.setNav("technology")}
             >
               <span className="font-bold mr-2">03</span>
               TECHNOLOGY

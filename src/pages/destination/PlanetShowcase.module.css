@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+@layer components {
+  .destination__wrapper {
+    @apply lg:grid lg:grid-cols-2
+    p-6 md:p-10 lg:py-12 lg:px-40
+    text-figma-blue-300;
+  }
+
+  .destination__title {
+    @apply lg:col-span-full
+    text-center md:text-start 
+    text-base md:text-xl lg:text-3xl 
+    uppercase text-white;
+  }
+  .destination__title__span {
+    @apply text-white/25 font-bold;
+  }
+
+  .destination__imgContainer {
+    @apply py-6 md:py-11 lg:py-32
+    grid justify-center;
+  }
+  .destination__img {
+    @apply w-36 md:w-80 lg:w-[480px] 
+    aspect-square;
+  }
+
+  .destination__infoWapper {
+    @apply md:px-20 lg:py-36;
+  }
+
+  .destination__menu {
+    @apply flex gap-8 
+    justify-center lg:justify-start;
+  }
+  .menu__item {
+    @apply text-sm md:text-base 
+    text-figma-blue-300 border-b-white border-b-2 inline-block h-8;
+  }
+
+  .destination__subtitle {
+    @apply text-6xl md:text-7xl lg:text-8xl 
+    text-center lg:text-start
+    text-white uppercase py-6;
+  }
+  .destination__text {
+    @apply text-sm md:text-base lg:text-lg
+    text-center lg:text-start;
+  }
+
+  .destination__separator {
+    @apply my-6 lg:my-10;
+  }
+
+  .destination__info {
+    @apply md:grid md:grid-cols-2 text-center;
+  }
+  .info__title {
+    @apply text-sm mb-3 uppercase;
+  }
+  .info__text {
+    @apply text-3xl text-white mb-6 uppercase;
+  }
+}

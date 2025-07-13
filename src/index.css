@@ -6,6 +6,27 @@
   --color-gray-97: #979797;
 }
 
+.home--background {
+  @apply bg-[url("../assets/home/background-home-mobile.jpg")]
+  lg:bg-[url("../assets/home/background-home-desktop.jpg")]
+  md:bg-[url("../assets/home/background-home-tablet.jpg")];
+}
+.destination--background {
+  @apply bg-[url("../assets/destination/background-destination-mobile.jpg")]
+  lg:bg-[url("../assets/destination/background-destination-desktop.jpg")]
+  md:bg-[url("../assets/destination/background-destination-tablet.jpg")];
+}
+.crew--background {
+  @apply bg-[url("../assets/crew/background-crew-mobile.jpg")]
+  lg:bg-[url("../assets/crew/background-crew-desktop.jpg")]
+  md:bg-[url("../assets/crew/background-crew-tablet.jpg")];
+}
+.technology--background {
+  @apply bg-[url("../assets/technology/background-technology-mobile.jpg")]
+  lg:bg-[url("../assets/technology/background-technology-desktop.jpg")]
+  md:bg-[url("../assets/technology/background-technology-tablet.jpg")];
+}
+
 /* No supe como haer el efecto activo desde los modulos de css */
 .menuMainItem.active {
   @apply bg-white/10 border-white md:bg-transparent;
