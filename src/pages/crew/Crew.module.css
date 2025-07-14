@@ -4,7 +4,8 @@
 @layer components {
   .crew__wrapper {
     @apply lg:grid lg:grid-cols-2
-    p-6 md:p-10 lg:py-12 lg:px-40
+    p-6 md:p-10 md:pb-0 
+    lg:py-12 lg:px-40
     text-figma-blue-300;
   }
 
@@ -16,5 +17,53 @@
   }
   .crew__title__span {
     @apply text-white/25 font-bold;
+  }
+
+  .crew__infoContainer {
+    @apply py-10 md:px-20 lg:px-0 lg:py-48
+     text-center lg:text-start;
+  }
+  .crew__info__rank {
+    @apply text-lg md:text-2xl
+    text-white/25 uppercase;
+  }
+  .crew__info__name {
+    @apply text-2xl md:text-5xl
+    uppercase mb-6;
+  }
+  .crew__info__text {
+    @apply text-sm md:text-base
+    text-figma-blue-300;
+  }
+
+  .crew__menuContainer {
+    @apply lg:order-2;
+  }
+  .crew__menu {
+    @apply flex flex-row
+    justify-center lg:justify-start
+    gap-4
+    mb-8;
+  }
+  .crew__menu__item {
+    @apply inline-block bg-figma-gray-300 w-2.5 aspect-square rounded-full;
+  }
+  .crew__imgContainer {
+    @apply relative 
+    flex justify-center 
+    h-80 md:h-[463px] lg:h-full  
+    overflow-hidden
+    lg:order-1
+    lg:col-start-2
+    lg:row-start-2
+    lg:row-span-2
+    /* sombra para la imagen */
+    after:w-full after:h-full
+    after:absolute after:top-0 after:left-0
+    after:bg-linear-to-b after:from-transparent lg:from-60% after:via-transparent lg:via-80%  after:to-figma-blue-900 lg:to-100%;
+  }
+  .crew__img {
+    @apply max-h-full
+    md:translate-y-4;
   }
 }

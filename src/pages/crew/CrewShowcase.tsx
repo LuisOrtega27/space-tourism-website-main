@@ -16,33 +16,31 @@ const CrewShowcase = () => {
         </p>
       </div>
 
-      <nav>
+      <nav className={crew.crew__menuContainer}>
         <ul className={crew.crew__menu}>
           <li>
-            <NavLink to={"#"} className={crew.crew__menu__item}>
-              0
-            </NavLink>
+            <NavLink
+              to={"crew1"}
+              className={`${crew.crew__menu__item} crewMenuItem`}
+            ></NavLink>
           </li>
-        </ul>
-        <ul>
           <li>
-            <NavLink to={"#"} className={crew.crew__menu__item}>
-              1
-            </NavLink>
+            <NavLink
+              to={"crew2"}
+              className={`${crew.crew__menu__item} crewMenuItem`}
+            ></NavLink>
           </li>
-        </ul>
-        <ul>
           <li>
-            <NavLink to={"#"} className={crew.crew__menu__item}>
-              2
-            </NavLink>
+            <NavLink
+              to={"crew3"}
+              className={`${crew.crew__menu__item} crewMenuItem`}
+            ></NavLink>
           </li>
-        </ul>
-        <ul>
           <li>
-            <NavLink to={"#"} className={crew.crew__menu__item}>
-              3
-            </NavLink>
+            <NavLink
+              to={"crew4"}
+              className={`${crew.crew__menu__item} crewMenuItem`}
+            ></NavLink>
           </li>
         </ul>
       </nav>
