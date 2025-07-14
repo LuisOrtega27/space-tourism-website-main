@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import IconLogo from "../../assets/IconLogo";
 import IconMenuOpen from "../../assets/menu/IconMenuOpen";
@@ -10,10 +10,19 @@ import styles from "./MenuMain.module.css";
 import { NavContext } from "../../App";
 import type { NavContextType } from "../../App";
 
+import { DataContext } from "../../App";
+import type { DataContextType } from "../../App";
+
 const MenuMain = () => {
   const navContext = useContext(NavContext) as NavContextType;
+  const dataContext = useContext(DataContext) as DataContextType;
 
+  const [menuItems, setMenuItems] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setMenuItems(dataContext);
+  }, [dataContext, menuItems]);
 
   return (
     <header className={styles.headerMain}>
@@ -38,7 +47,25 @@ const MenuMain = () => {
             styles.menuMain
           }`}
         >
-          <li>
+          {Object.keys(menuItems).map((key, index) => {
+            return (
+              <li key={`${index}-${key}`}>
+                <NavLink
+                  to={key == "home" ? "/" : key}
+                  onClick={() => navContext.setNav(key)}
+                  className={styles.menuMain__item + " menuMainItem"}
+                >
+                  <span className="font-bold mr-2 inline md:hidden lg:inline">
+                    0{index}
+                  </span>
+
+                  {key}
+                </NavLink>
+              </li>
+            );
+          })}
+
+          {/* <li>
             <NavLink
               to={"/"}
               className={styles.menuMain__item + " menuMainItem"}
@@ -79,7 +106,7 @@ const MenuMain = () => {
               <span className="font-bold mr-2">03</span>
               TECHNOLOGY
             </NavLink>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

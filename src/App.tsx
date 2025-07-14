@@ -1,4 +1,4 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import Home from "./pages/home";
@@ -13,6 +13,7 @@ import Technology from "./pages/Technology";
 import MenuMain from "./components/menu_main/MenuMain";
 
 import PageNotFound from "./pages/PageNotFound";
+import CrewShowcase from "./pages/crew/CrewShowcase";
 
 export type NavContextType = {
   nav: string;
@@ -20,9 +21,29 @@ export type NavContextType = {
 };
 export const NavContext = createContext();
 
+export type DataContextType = {
+  home: object;
+  destination: object;
+  crew: object;
+  technology: object;
+};
+export const DataContext = createContext();
+
+const URL = `../data/data.json`;
+
 function App() {
   const PATH_NAME = window.location.pathname;
   const [nav, setNav] = useState(PATH_NAME.split("/")[1] || "home");
+
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    fetch(URL)
+      .then((result) => result.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
   return (
     <main
@@ -34,24 +55,29 @@ function App() {
         `}
     >
       <BrowserRouter>
-        <NavContext value={{ nav, setNav }}>
-          <MenuMain />
-        </NavContext>
+        <DataContext value={data}>
+          <NavContext value={{ nav, setNav }}>
+            <MenuMain />
+          </NavContext>
 
-        <Routes>
-          <Route path="/" element={<Home />} />
+          <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route path="destination" element={<Destination />}>
-            <Route index element={<PlanetShowcase />} />
-            <Route path=":destiny" element={<PlanetShowcase />} />
-          </Route>
+            <Route path="destination" element={<Destination />}>
+              <Route index element={<PlanetShowcase />} />
+              <Route path=":destiny" element={<PlanetShowcase />} />
+            </Route>
 
-          <Route path="crew" element={<Crew />} />
+            <Route path="crew" element={<Crew />}>
+              <Route index element={<CrewShowcase />} />
+              <Route path={":integrant"} element={<CrewShowcase />} />
+            </Route>
 
-          <Route path="technology" element={<Technology />} />
+            <Route path="technology" element={<Technology />} />
 
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </DataContext>
       </BrowserRouter>
     </main>
   );

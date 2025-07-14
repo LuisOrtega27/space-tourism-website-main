@@ -1,0 +1,20 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+@layer components {
+  .crew__wrapper {
+    @apply lg:grid lg:grid-cols-2
+    p-6 md:p-10 lg:py-12 lg:px-40
+    text-figma-blue-300;
+  }
+
+  .crew__title {
+    @apply lg:col-span-full
+    text-center md:text-start 
+    text-base md:text-xl lg:text-3xl 
+    uppercase text-white;
+  }
+  .crew__title__span {
+    @apply text-white/25 font-bold;
+  }
+}

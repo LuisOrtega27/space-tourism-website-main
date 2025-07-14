@@ -6,7 +6,7 @@
   .home {
     @apply flex flex-col lg:flex-row lg:flex-wrap
     gap-6 
-    p-12 md:p-32 lg:pt-72 
+    p-12 md:p-32 lg:pt-60 
     text-white
     lg:max-w-[1600px] lg:mx-auto;
   }
