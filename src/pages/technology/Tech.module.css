@@ -1,0 +1,51 @@
+@import "tailwindcss";
+@import "../../index.css";
+
+@layer components {
+  /* .tech__section {
+    @apply;
+  } */
+  .tech__wrapper {
+    @apply p-6 md:p-10 lg:py-12 lg:px-40
+    text-figma-blue-300;
+  }
+
+  .tech__title {
+    @apply lg:col-span-full
+    text-center md:text-start 
+    text-base md:text-xl lg:text-3xl 
+    uppercase text-white;
+  }
+  .tech__title__span {
+    @apply text-white/25 font-bold;
+  }
+
+  .tech__img {
+    @apply h-64 md:h-[357px] lg:h-[600px] mt-20 w-full object-center lg:object-contain;
+  }
+
+  .tech__infoContainer {
+    @apply text-center;
+  }
+
+  .tech__menu {
+    @apply flex justify-center gap-4;
+  }
+  .tech__menu_item {
+    @apply size-10 flex justify-center items-center rounded-full border-2 border-white/25 mb-10;
+  }
+
+  .tech__infoContainer {
+    @apply p-10  text-white;
+  }
+
+  .tech__info__subtitle {
+    @apply text-lg text-white/50 uppercase mb-4;
+  }
+  .tech__info__name {
+    @apply text-2xl uppercase mb-4;
+  }
+  .tech__info__tech {
+    @apply md:px-24 text-base text-figma-blue-300 mb-4;
+  }
+}
