@@ -14,6 +14,7 @@ import MenuMain from "./components/menu_main/MenuMain";
 
 import PageNotFound from "./pages/PageNotFound";
 import CrewShowcase from "./pages/crew/CrewShowcase";
+import Tech from "./pages/technology/Tech";
 
 export type NavContextType = {
   nav: string;
@@ -73,7 +74,11 @@ function App() {
               <Route path={":integrant"} element={<CrewShowcase />} />
             </Route>
 
-            <Route path="technology" element={<Technology />} />
+            {/* falta technology */}
+            <Route path="technology" element={<Technology />}>
+              <Route index element={<Tech />} />
+              <Route path=":Tech" element={<Tech />} />
+            </Route>
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
