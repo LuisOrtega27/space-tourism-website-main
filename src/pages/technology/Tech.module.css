@@ -6,46 +6,74 @@
     @apply;
   } */
   .tech__wrapper {
+    @apply lg:flex lg:flex-wrap lg:justify-between;
+  }
+
+  .tech__titleContainer {
     @apply p-6 md:p-10 lg:py-12 lg:px-40
-    text-figma-blue-300;
+    text-figma-blue-300
+    lg:w-full
+    lg:order-1;
   }
 
   .tech__title {
     @apply lg:col-span-full
     text-center md:text-start 
     text-base md:text-xl lg:text-3xl 
-    uppercase text-white;
+    uppercase
+    text-white;
   }
   .tech__title__span {
     @apply text-white/25 font-bold;
   }
 
+  .tech__imgContainer {
+    @apply lg:w-1/4 2xl:w-auto
+    lg:order-3;
+  }
   .tech__img {
-    @apply h-64 md:h-[357px] lg:h-[600px] mt-20 w-full object-center lg:object-contain;
+    @apply h-64 md:h-[357px] lg:h-[600px] 
+    object-center lg:object-cover
+    mt-20 lg:mt-0 
+    w-full lg:w-auto;
   }
 
   .tech__infoContainer {
-    @apply text-center;
+    @apply lg:flex lg:gap-16
+    text-center lg:text-start
+    p-10 lg:p-0
+    text-white
+    lg:w-1/2
+    lg:items-center
+    lg:order-2
+    md:ml-10 xl:ml-40 2xl:ml-44;
   }
 
   .tech__menu {
-    @apply flex justify-center gap-4;
+    @apply flex lg:flex-col
+    justify-center items-center gap-10;
   }
   .tech__menu_item {
-    @apply size-10 flex justify-center items-center rounded-full border-2 border-white/25 mb-10;
-  }
-
-  .tech__infoContainer {
-    @apply p-10  text-white;
+    @apply flex justify-center items-center 
+    size-10 md:size-14 lg:size-20
+    md:text-2xl lg:text-3xl
+    rounded-full 
+    border-2 
+    border-white/25;
   }
 
   .tech__info__subtitle {
-    @apply text-lg text-white/50 uppercase mb-4;
+    @apply text-lg lg:text-3xl 
+    text-white/50 uppercase mb-4;
   }
   .tech__info__name {
-    @apply text-2xl uppercase mb-4;
+    @apply text-2xl lg:text-6xl
+    uppercase 
+    mb-4 lg:mb-6;
   }
   .tech__info__tech {
-    @apply md:px-24 text-base text-figma-blue-300 mb-4;
+    @apply md:px-24 lg:px-0 
+    text-base lg:text-lg
+    text-figma-blue-300 mb-4;
   }
 }

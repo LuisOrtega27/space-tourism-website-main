@@ -4,8 +4,8 @@ import tech from "./technology/Tech.module.css";
 
 const Technology = () => {
   return (
-    <article className={tech.tech__section}>
-      <div className={tech.tech__wrapper}>
+    <article className={tech.tech__wrapper}>
+      <div className={tech.tech__titleContainer}>
         <h1 className={tech.tech__title}>
           <span className={tech.tech__title__span}>03</span> Space launch 101
         </h1>
