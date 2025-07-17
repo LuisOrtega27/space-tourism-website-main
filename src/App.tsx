@@ -1,20 +1,20 @@
 import { useState, createContext, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
+import MenuMain from "./components/menu_main/MenuMain";
+
 import Home from "./pages/home";
 
 import Destination from "./pages/Destination";
 import PlanetShowcase from "./pages/destination/PlanetShowcase";
 
 import Crew from "./pages/Crew";
+import CrewShowcase from "./pages/crew/CrewShowcase";
 
 import Technology from "./pages/Technology";
-
-import MenuMain from "./components/menu_main/MenuMain";
+import Tech from "./pages/technology/Tech";
 
 import PageNotFound from "./pages/PageNotFound";
-import CrewShowcase from "./pages/crew/CrewShowcase";
-import Tech from "./pages/technology/Tech";
 
 export type NavContextType = {
   nav: string;

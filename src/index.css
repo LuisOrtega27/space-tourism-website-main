@@ -36,3 +36,7 @@
 .crewMenuItem.active {
   @apply bg-white;
 }
+
+.destinationMenuItem.active {
+  @apply border-b-white;
+}
