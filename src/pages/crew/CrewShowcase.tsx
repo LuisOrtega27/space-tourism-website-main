@@ -1,55 +1,61 @@
-import { NavLink } from "react-router";
+import { NavLink, useParams } from "react-router";
+import { useContext, useEffect, useState } from "react";
 
-import crew from "./Crew.module.css";
+import crewStyles from "./Crew.module.css";
+
+import type { DataContextType } from "../../App";
+import { DataContext } from "../../App";
 
 const CrewShowcase = () => {
+  const { crew } = useContext(DataContext) as DataContextType;
+  const params = useParams();
+
+  const [crewMember, setCrewMember] = useState() as {
+    name: string;
+    images: { webp: string; png: string };
+    role: string;
+    bio: string;
+  };
+
+  useEffect(() => {
+    if (crew == undefined) return;
+
+    Object.values(crew).map((member) => {
+      if (member.name == params.integrant || member.name == crew[0].name)
+        return setCrewMember(member);
+    });
+  }, [crew, params.integrant]);
+
   return (
     <>
-      <div className={crew.crew__infoContainer}>
-        <h3 className={crew.crew__info__rank}>comander </h3>
-        <h2 className={crew.crew__info__name}>Douglas Hurley</h2>
+      <div className={crewStyles.crew__infoContainer}>
+        <h3 className={crewStyles.crew__info__rank}>{crewMember?.role}</h3>
+        <h2 className={crewStyles.crew__info__name}>{crewMember?.name}</h2>
 
-        <p className={crew.crew__info__text}>
-          Douglas Gerald Hurley is an American engineer, former Marine Corps
-          pilot and former NASA astronaut. He launched into space for the third
-          time as commander of Crew Dragon Demo-2.
-        </p>
+        <p className={crewStyles.crew__info__text}>{crewMember?.bio}</p>
       </div>
 
-      <nav className={crew.crew__menuContainer}>
-        <ul className={crew.crew__menu}>
-          <li>
-            <NavLink
-              to={"crew1"}
-              className={`${crew.crew__menu__item} crewMenuItem`}
-            ></NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"crew2"}
-              className={`${crew.crew__menu__item} crewMenuItem`}
-            ></NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"crew3"}
-              className={`${crew.crew__menu__item} crewMenuItem`}
-            ></NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"crew4"}
-              className={`${crew.crew__menu__item} crewMenuItem`}
-            ></NavLink>
-          </li>
+      <nav className={crewStyles.crew__menuContainer}>
+        <ul className={crewStyles.crew__menu}>
+          {crew &&
+            Object.values(crew).map((member) => {
+              return (
+                <li key={member.name}>
+                  <NavLink
+                    to={`/crew/${member.name}`}
+                    className={`${crewStyles.crew__menu__item} crewMenuItem`}
+                  ></NavLink>
+                </li>
+              );
+            })}
         </ul>
       </nav>
 
-      <div className={crew.crew__imgContainer}>
+      <div className={crewStyles.crew__imgContainer}>
         <img
-          className={crew.crew__img}
-          src="../../assets/crew/image-douglas-hurley.webp"
-          alt="crew"
+          className={crewStyles.crew__img}
+          src={`../.${crewMember?.images.webp}`}
+          alt={crewMember?.name}
         />
       </div>
     </>

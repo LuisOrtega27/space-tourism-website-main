@@ -29,14 +29,21 @@
 }
 
 /* No supe como haer el efecto activo desde los modulos de css */
+
+/* HOME */
 .menuMainItem.active {
   @apply bg-white/10 border-white md:bg-transparent;
 }
 
+/* DESTINATION */
+.destinationMenuItem.active {
+  @apply border-b-white;
+}
+
+/* CREW */
 .crewMenuItem.active {
   @apply bg-white;
 }
 
-.destinationMenuItem.active {
-  @apply border-b-white;
-}
+/* TECHNOLOGY */
+/* .technologyMenuItem.active{} */

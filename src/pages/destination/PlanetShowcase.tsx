@@ -47,7 +47,7 @@ const PlanetShowcase = () => {
         <nav>
           <ul className={destination.destination__menu}>
             {destinations &&
-              destinations.map((item: DestinationItem) => {
+              destinations.map((item: { name: string }) => {
                 return (
                   <li key={item.name}>
                     <NavLink

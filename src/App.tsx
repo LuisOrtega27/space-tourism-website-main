@@ -24,9 +24,24 @@ export const NavContext = createContext();
 
 export type DataContextType = {
   home: object;
-  destination: object;
-  crew: object;
-  technology: object;
+  destination: Array<{
+    name: string;
+    images: { webp: string; png: string };
+    description: string;
+    distance: string;
+    travel: string;
+  }>;
+  crew: Array<{
+    name: string;
+    images: { webp: string; png: string };
+    role: string;
+    bio: string;
+  }>;
+  technology: Array<{
+    name: string;
+    images: { portrait: string; landscape: string };
+    description: string;
+  }>;
 };
 export const DataContext = createContext();
 
