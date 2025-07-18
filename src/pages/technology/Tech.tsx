@@ -1,62 +1,66 @@
-import { NavLink } from "react-router";
+import { NavLink, useParams } from "react-router";
 
-import tech from "./Tech.module.css";
+import techStyles from "./Tech.module.css";
+
+import type { DataContextType } from "../../App";
+import { DataContext } from "../../App";
+import { useContext, useEffect, useState } from "react";
+import TechMenu from "../../components/techMenu/TechMenu";
 
 const Tech = () => {
+  const [tech, setTech] = useState() as {
+    name: string;
+    images: {
+      portrait: string;
+      landscape: string;
+    };
+    description: string;
+  };
+  const { technology } = useContext(DataContext) as DataContextType;
+
+  const params = useParams();
+
+  useEffect(() => {
+    if (technology == undefined) return;
+
+    technology.forEach((tech: { name: string }) => {
+      if (tech.name == params.tech || tech.name == "Launch vehicle")
+        setTech(tech);
+    });
+  }, [technology, params.tech]);
+
   return (
     <>
-      <div className={tech.tech__imgContainer}>
+      <div className={techStyles.tech__imgContainer}>
         <picture>
           <source
             media="(width >= 1440px)"
-            srcSet="../../../assets/technology/image-launch-vehicle-portrait.jpg"
+            srcSet={`../../.${tech?.images?.portrait}`}
           />
 
           <source
             media="(width >= 1440px)"
-            srcSet="../../../assets/technology/image-launch-vehicle-landscape.jpg"
+            srcSet={`../../.${tech?.images?.landscape}`}
           />
 
           <img
-            className={tech.tech__img}
-            src="../../../assets/technology/image-launch-vehicle-portrait.jpg"
+            className={techStyles.tech__img}
+            src={`../../.${tech?.images?.portrait}`}
             alt="Technology"
           />
         </picture>
       </div>
 
-      <div className={tech.tech__infoContainer}>
-        <nav>
-          <ul className={tech.tech__menu}>
-            <li>
-              <NavLink to={"launch-vehicle"} className={tech.tech__menu_item}>
-                1
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"spce-capsule"} className={tech.tech__menu_item}>
-                2
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to={"spaceport"} className={tech.tech__menu_item}>
-                3
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
+      <div className={techStyles.tech__infoContainer}>
+        <TechMenu technology={technology} />
 
         <div>
-          <h3 className={tech.tech__info__subtitle}>The terminology...</h3>
-          <h2 className={tech.tech__info__name}>Launch vehicle</h2>
+          <h3 className={techStyles.tech__info__subtitle}>
+            The terminology...
+          </h3>
+          <h2 className={techStyles.tech__info__name}>{tech?.name}</h2>
 
-          <p className={tech.tech__info__tech}>
-            A launch vehicle or carrier rocket is a rocket-propelled vehicle
-            used to carry a payload from Earth's surface to space, usually to
-            Earth orbit or beyond. Our WEB-X carrier rocket is the most powerful
-            in operation. Standing 150 metres tall, it's quite an awe-inspiring
-            sight on the launch pad!
-          </p>
+          <p className={techStyles.tech__info__tech}>{tech?.description}</p>
         </div>
       </div>
     </>

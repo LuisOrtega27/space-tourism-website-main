@@ -46,4 +46,6 @@
 }
 
 /* TECHNOLOGY */
-/* .technologyMenuItem.active{} */
+.technologyMenuItem.active {
+  @apply bg-white text-figma-blue-900;
+}

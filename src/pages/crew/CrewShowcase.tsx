@@ -2,6 +2,7 @@ import { NavLink, useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
 
 import crewStyles from "./Crew.module.css";
+import CrewMenu from "../../components/crewMenu/CrewMenu";
 
 import type { DataContextType } from "../../App";
 import { DataContext } from "../../App";
@@ -35,21 +36,7 @@ const CrewShowcase = () => {
         <p className={crewStyles.crew__info__text}>{crewMember?.bio}</p>
       </div>
 
-      <nav className={crewStyles.crew__menuContainer}>
-        <ul className={crewStyles.crew__menu}>
-          {crew &&
-            Object.values(crew).map((member) => {
-              return (
-                <li key={member.name}>
-                  <NavLink
-                    to={`/crew/${member.name}`}
-                    className={`${crewStyles.crew__menu__item} crewMenuItem`}
-                  ></NavLink>
-                </li>
-              );
-            })}
-        </ul>
-      </nav>
+      <CrewMenu crew={crew} />
 
       <div className={crewStyles.crew__imgContainer}>
         <img

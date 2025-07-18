@@ -92,7 +92,7 @@ function App() {
             {/* falta technology */}
             <Route path="technology" element={<Technology />}>
               <Route index element={<Tech />} />
-              <Route path=":Tech" element={<Tech />} />
+              <Route path=":tech" element={<Tech />} />
             </Route>
 
             <Route path="*" element={<PageNotFound />} />

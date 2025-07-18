@@ -4,10 +4,7 @@ import { useContext, useEffect, useState } from "react";
 
 import type { DataContextType } from "../../App";
 import { DataContext } from "../../App";
-
-type DestinationItem = {
-  name: string;
-};
+import DestinationMenu from "../../components/destinationMenu/DestinationMenu";
 
 const PlanetShowcase = () => {
   const params = useParams();
@@ -15,7 +12,13 @@ const PlanetShowcase = () => {
   const dataContext = useContext(DataContext) as DataContextType;
   const [destinations, setDestinations] = useState();
 
-  const [componenText, setComponenText] = useState(dataContext.destination);
+  const [componenText, setComponenText] = useState(dataContext.destination) as {
+    name: string;
+    images: { png: string; webp: string };
+    description: string;
+    distance: string;
+    travel: string;
+  };
 
   useEffect(() => {
     if (dataContext.destination == null) return;
@@ -44,23 +47,7 @@ const PlanetShowcase = () => {
       </div>
 
       <div className={destination.destination__infoWapper}>
-        <nav>
-          <ul className={destination.destination__menu}>
-            {destinations &&
-              destinations.map((item: { name: string }) => {
-                return (
-                  <li key={item.name}>
-                    <NavLink
-                      to={`/destination/${item.name}`}
-                      className={`${destination.menu__item} destinationMenuItem`}
-                    >
-                      {item.name}
-                    </NavLink>
-                  </li>
-                );
-              })}
-          </ul>
-        </nav>
+        <DestinationMenu destinations={destinations} />
 
         <h2 className={destination.destination__subtitle}>
           {componenText?.name}
