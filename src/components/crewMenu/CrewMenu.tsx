@@ -19,7 +19,7 @@ const CrewMenu = ({ crew, isDefault }: CrewMenuProps) => {
             return (
               <li key={member.name}>
                 <NavLink
-                  to={`/crew/${member.name}`}
+                  to={`${import.meta.env.BASE_URL}crew/${member.name}`}
                   className={`${crewStyles.crew__menu__item} crewMenuItem ${
                     isDefault == true && index == 0 ? "active" : ""
                   }`}

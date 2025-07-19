@@ -51,7 +51,11 @@ const MenuMain = () => {
             return (
               <li key={`${index}-${key}`}>
                 <NavLink
-                  to={key == "home" ? "/" : key}
+                  to={
+                    key == "home"
+                      ? `${import.meta.env.BASE_URL}`
+                      : `${import.meta.env.BASE_URL}${key}`
+                  }
                   onClick={() => navContext.setNav(key)}
                   className={styles.menuMain__item + " menuMainItem"}
                 >

@@ -50,11 +50,13 @@ export type DataContextType = {
 };
 export const DataContext = createContext();
 
-const URL = `../data/data.json`;
+const URL = `${import.meta.env.BASE_URL}data/data.json`;
 
 function App() {
   const PATH_NAME = window.location.pathname;
-  const [nav, setNav] = useState(PATH_NAME.split("/")[1] || "home");
+  const [nav, setNav] = useState(
+    PATH_NAME.split("/")[2] || `${import.meta.env.BASE_URL}`
+  );
 
   const [data, setData] = useState({});
 
@@ -82,20 +84,25 @@ function App() {
           </NavContext>
 
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path={`${import.meta.env.BASE_URL}`} element={<Home />} />
 
-            <Route path="destination" element={<Destination />}>
+            <Route
+              path={`${import.meta.env.BASE_URL}destination`}
+              element={<Destination />}
+            >
               <Route index element={<PlanetShowcase isDefault />} />
               <Route path=":destiny" element={<PlanetShowcase />} />
             </Route>
 
-            <Route path="crew" element={<Crew />}>
+            <Route path={`${import.meta.env.BASE_URL}crew`} element={<Crew />}>
               <Route index element={<CrewShowcase isDefault />} />
               <Route path={":integrant"} element={<CrewShowcase />} />
             </Route>
 
-            {/* falta technology */}
-            <Route path="technology" element={<Technology />}>
+            <Route
+              path={`${import.meta.env.BASE_URL}technology`}
+              element={<Technology />}
+            >
               <Route index element={<Tech isDefault />} />
               <Route path=":tech" element={<Tech />} />
             </Route>

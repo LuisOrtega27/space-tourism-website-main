@@ -44,7 +44,7 @@ const CrewShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
       <div className={crewStyles.crew__imgContainer}>
         <img
           className={crewStyles.crew__img}
-          src={`../.${crewMember?.images.webp}`}
+          src={`${import.meta.env.BASE_URL}${crewMember?.images.webp}`}
           alt={crewMember?.name}
         />
       </div>

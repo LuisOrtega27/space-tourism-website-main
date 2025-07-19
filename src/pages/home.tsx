@@ -20,7 +20,7 @@ const Home = () => {
       <div className={styles.home__buttonContainer}>
         <button
           className={styles.home__button}
-          onClick={() => navigate("destination")}
+          onClick={() => navigate(`${import.meta.env.BASE_URL}destination`)}
         >
           {home?.button}
         </button>

@@ -40,17 +40,17 @@ const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {
         <picture>
           <source
             media="(width >= 1440px)"
-            srcSet={`../../.${tech?.images?.portrait}`}
+            srcSet={`${import.meta.env.BASE_URL}${tech?.images?.portrait}`}
           />
 
           <source
             media="(width >= 1440px)"
-            srcSet={`../../.${tech?.images?.landscape}`}
+            srcSet={`${import.meta.env.BASE_URL}${tech?.images?.landscape}`}
           />
 
           <img
             className={techStyles.tech__img}
-            src={`../../.${tech?.images?.portrait}`}
+            src={`${import.meta.env.BASE_URL}${tech?.images?.portrait}`}
             alt="Technology"
           />
         </picture>

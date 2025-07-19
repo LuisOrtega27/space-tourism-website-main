@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@import "../index.css";
+
+.pageNotFound {
+  @apply bg-deep 
+  text-white font-bold 
+  absolute top-0 left-0 
+  -z-10 
+  h-dvh w-dvw 
+  flex justify-center items-center flex-col
+  gap-10;
+}
+.pageNotFound__title {
+  @apply text-red-600 text-6xl;
+}
+.pageNotFound__text {
+  @apply w-1/2 text-4xl;
+}
+.pageNotFound__button {
+  @apply border-2 border-red-600 
+  px-4 py-2 
+  text-red-600
+  hover:bg-red-600 hover:text-white
+  cursor-pointer;
+}
