@@ -24,7 +24,7 @@ const DestinationMenu: React.FC<DestinationMenuProps> = ({
             return (
               <li key={item.name}>
                 <NavLink
-                  to={`/destination/${item.name}`}
+                  to={`${import.meta.env.BASE_URL}destination/${item.name}`}
                   className={`${destination.menu__item} destinationMenuItem ${
                     isDefault == true && item.name == "Moon" ? "active" : ""
                   }`}

@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 
 import IconLogo from "../../assets/IconLogo";
 import IconMenuOpen from "../../assets/menu/IconMenuOpen";
@@ -15,14 +15,9 @@ import type { DataContextType } from "../../App";
 
 const MenuMain = () => {
   const navContext = useContext(NavContext) as NavContextType;
-  const dataContext = useContext(DataContext) as DataContextType;
+  const menuItems = useContext(DataContext) as DataContextType;
 
-  const [menuItems, setMenuItems] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setMenuItems(dataContext);
-  }, [dataContext, menuItems]);
 
   return (
     <header className={styles.headerMain}>
@@ -48,10 +43,21 @@ const MenuMain = () => {
           }`}
         >
           {Object.keys(menuItems).map((key, index) => {
+            console.log(
+              key == "home"
+                ? import.meta.env.BASE_URL
+                : import.meta.env.BASE_URL + key
+            );
+
             return (
               <li key={`${index}-${key}`}>
                 <NavLink
-                  to={key == "home" ? "/" : key}
+                  to={
+                    key == "home"
+                      ? import.meta.env.BASE_URL
+                      : import.meta.env.BASE_URL + key
+                  }
+                  end={key == "home" && true}
                   onClick={() => navContext.setNav(key)}
                   className={styles.menuMain__item + " menuMainItem"}
                 >
@@ -64,49 +70,6 @@ const MenuMain = () => {
               </li>
             );
           })}
-
-          {/* <li>
-            <NavLink
-              to={"/"}
-              className={styles.menuMain__item + " menuMainItem"}
-              onClick={() => navContext.setNav("home")}
-            >
-              <span className="font-bold mr-2 inline md:hidden lg:inline">
-                00
-              </span>
-              HOME
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"destination"}
-              className={styles.menuMain__item + " menuMainItem"}
-              onClick={() => navContext.setNav("destination")}
-            >
-              <span className="font-bold mr-2">01</span>
-              DESTINATION
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"crew"}
-              className={styles.menuMain__item + " menuMainItem"}
-              onClick={() => navContext.setNav("crew")}
-            >
-              <span className="font-bold mr-2">02</span>
-              CREW
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to={"technology"}
-              className={styles.menuMain__item + " menuMainItem"}
-              onClick={() => navContext.setNav("technology")}
-            >
-              <span className="font-bold mr-2">03</span>
-              TECHNOLOGY
-            </NavLink>
-          </li> */}
         </ul>
       </nav>
     </header>

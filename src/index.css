@@ -4,28 +4,29 @@
   --color-figma-blue-300: #d0d6f9;
   --color-figma-blue-900: #0b0d17;
   --color-figma-gray-300: #979797;
+  --color-deep: rgb(24, 24, 24);
   --inset-shadow-b: inset 0 -20px 3px rgba(0, 0, 0, 0.25);
 }
 
 .home--background {
-  @apply bg-[url("../assets/home/background-home-mobile.jpg")]
-  lg:bg-[url("../assets/home/background-home-desktop.jpg")]
-  md:bg-[url("../assets/home/background-home-tablet.jpg")];
+  @apply bg-[url("/space-tourism-website-main/assets/home/background-home-mobile.jpg")]
+  lg:bg-[url("/space-tourism-website-main/assets/home/background-home-desktop.jpg")]
+  md:bg-[url("/space-tourism-website-main/assets/home/background-home-tablet.jpg")];
 }
 .destination--background {
-  @apply bg-[url("../assets/destination/background-destination-mobile.jpg")]
-  lg:bg-[url("../assets/destination/background-destination-desktop.jpg")]
-  md:bg-[url("../assets/destination/background-destination-tablet.jpg")];
+  @apply bg-[url("/space-tourism-website-main/assets/destination/background-destination-mobile.jpg")]
+  lg:bg-[url("/space-tourism-website-main/assets/destination/background-destination-desktop.jpg")]
+  md:bg-[url("/space-tourism-website-main/assets/destination/background-destination-tablet.jpg")];
 }
 .crew--background {
-  @apply bg-[url("../assets/crew/background-crew-mobile.jpg")]
-  lg:bg-[url("../assets/crew/background-crew-desktop.jpg")]
-  md:bg-[url("../assets/crew/background-crew-tablet.jpg")];
+  @apply bg-[url("/space-tourism-website-main/assets/crew/background-crew-mobile.jpg")]
+  lg:bg-[url("/space-tourism-website-main/assets/crew/background-crew-desktop.jpg")]
+  md:bg-[url("/space-tourism-website-main/assets/crew/background-crew-tablet.jpg")];
 }
 .technology--background {
-  @apply bg-[url("../assets/technology/background-technology-mobile.jpg")]
-  lg:bg-[url("../assets/technology/background-technology-desktop.jpg")]
-  md:bg-[url("../assets/technology/background-technology-tablet.jpg")];
+  @apply bg-[url("/space-tourism-website-main/assets/technology/background-technology-mobile.jpg")]
+  lg:bg-[url("/space-tourism-website-main/assets/technology/background-technology-desktop.jpg")]
+  md:bg-[url("/space-tourism-website-main/assets/technology/background-technology-tablet.jpg")];
 }
 
 /* No supe como haer el efecto activo desde los modulos de css */

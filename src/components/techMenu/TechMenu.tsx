@@ -26,7 +26,7 @@ const TechMenu = ({ technology, isDefault }: TechMenuProps) => {
             return (
               <li key={tech.name}>
                 <NavLink
-                  to={`/technology/${tech.name}`}
+                  to={`${import.meta.env.BASE_URL}technology/${tech.name}`}
                   className={`${
                     techStyles.tech__menu_item
                   } technologyMenuItem ${

@@ -1,9 +1,22 @@
+import { useNavigate } from "react-router";
+import notFound from "./PageNotFound.module.css";
+
 const PageNotFound = () => {
+  const navigate = useNavigate();
+
   return (
-    <>
-      <h1>Page not found</h1>
-      <p>i dont know qhf where you searching for, but here it istn</p>
-    </>
+    <article className={notFound.pageNotFound}>
+      <h1 className={notFound.pageNotFound__title}>Page not found</h1>
+      <p className={notFound.pageNotFound__text}>
+        I dont know where you searching for, just return
+      </p>
+      <button
+        onClick={() => navigate("/")}
+        className={notFound.pageNotFound__button}
+      >
+        Return
+      </button>
+    </article>
   );
 };
 

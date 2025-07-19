@@ -50,7 +50,7 @@ const PlanetShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
       <div className={destination.destination__imgContainer}>
         <img
           className={destination.destination__img}
-          src={`../../.${componenText?.images?.webp}`}
+          src={`${import.meta.env.BASE_URL}/.${componenText?.images?.webp}`}
           alt={componenText?.name}
         />
       </div>
