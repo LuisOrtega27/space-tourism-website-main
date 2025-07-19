@@ -80,18 +80,18 @@ function App() {
             <Route path="/" element={<Home />} />
 
             <Route path="destination" element={<Destination />}>
-              <Route index element={<PlanetShowcase />} />
+              <Route index element={<PlanetShowcase isDefault />} />
               <Route path=":destiny" element={<PlanetShowcase />} />
             </Route>
 
             <Route path="crew" element={<Crew />}>
-              <Route index element={<CrewShowcase />} />
+              <Route index element={<CrewShowcase isDefault />} />
               <Route path={":integrant"} element={<CrewShowcase />} />
             </Route>
 
             {/* falta technology */}
             <Route path="technology" element={<Technology />}>
-              <Route index element={<Tech />} />
+              <Route index element={<Tech isDefault />} />
               <Route path=":tech" element={<Tech />} />
             </Route>
 

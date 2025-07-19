@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router";
+import { useParams } from "react-router";
 import { useContext, useEffect, useState } from "react";
 
 import crewStyles from "./Crew.module.css";
@@ -7,16 +7,19 @@ import CrewMenu from "../../components/crewMenu/CrewMenu";
 import type { DataContextType } from "../../App";
 import { DataContext } from "../../App";
 
-const CrewShowcase = () => {
+const CrewShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
   const { crew } = useContext(DataContext) as DataContextType;
   const params = useParams();
 
-  const [crewMember, setCrewMember] = useState() as {
-    name: string;
-    images: { webp: string; png: string };
-    role: string;
-    bio: string;
-  };
+  const [crewMember, setCrewMember] = useState<
+    | {
+        name: string;
+        images: { webp: string; png: string };
+        role: string;
+        bio: string;
+      }
+    | undefined
+  >(undefined);
 
   useEffect(() => {
     if (crew == undefined) return;
@@ -36,7 +39,7 @@ const CrewShowcase = () => {
         <p className={crewStyles.crew__info__text}>{crewMember?.bio}</p>
       </div>
 
-      <CrewMenu crew={crew} />
+      <CrewMenu crew={crew} isDefault={isDefault} />
 
       <div className={crewStyles.crew__imgContainer}>
         <img

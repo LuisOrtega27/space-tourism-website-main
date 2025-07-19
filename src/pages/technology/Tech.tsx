@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router";
+import { useParams } from "react-router";
 
 import techStyles from "./Tech.module.css";
 
@@ -7,15 +7,19 @@ import { DataContext } from "../../App";
 import { useContext, useEffect, useState } from "react";
 import TechMenu from "../../components/techMenu/TechMenu";
 
-const Tech = () => {
-  const [tech, setTech] = useState() as {
-    name: string;
-    images: {
-      portrait: string;
-      landscape: string;
-    };
-    description: string;
-  };
+const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {
+  const [tech, setTech] = useState<
+    | {
+        name: string;
+        images: {
+          portrait: string;
+          landscape: string;
+        };
+        description: string;
+      }
+    | undefined
+  >();
+
   const { technology } = useContext(DataContext) as DataContextType;
 
   const params = useParams();
@@ -23,7 +27,7 @@ const Tech = () => {
   useEffect(() => {
     if (technology == undefined) return;
 
-    technology.forEach((tech: { name: string }) => {
+    technology.forEach((tech) => {
       if (tech.name == params.tech || tech.name == "Launch vehicle")
         setTech(tech);
     });
@@ -52,7 +56,7 @@ const Tech = () => {
       </div>
 
       <div className={techStyles.tech__infoContainer}>
-        <TechMenu technology={technology} />
+        <TechMenu technology={technology} isDefault={isDefault} />
 
         <div>
           <h3 className={techStyles.tech__info__subtitle}>

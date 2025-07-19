@@ -8,9 +8,10 @@ type TechnologyItem = {
 
 type TechMenuProps = {
   technology: Record<string, TechnologyItem>;
+  isDefault: boolean | undefined;
 };
 
-const TechMenu = ({ technology }: TechMenuProps) => {
+const TechMenu = ({ technology, isDefault }: TechMenuProps) => {
   return (
     <nav>
       <ul className={techStyles.tech__menu}>
@@ -20,7 +21,11 @@ const TechMenu = ({ technology }: TechMenuProps) => {
               <li key={tech.name}>
                 <NavLink
                   to={`/technology/${tech.name}`}
-                  className={`${techStyles.tech__menu_item} technologyMenuItem`}
+                  className={`${
+                    techStyles.tech__menu_item
+                  } technologyMenuItem ${
+                    isDefault && index == 0 ? "active" : ""
+                  }`}
                 >
                   {index + 1}
                 </NavLink>

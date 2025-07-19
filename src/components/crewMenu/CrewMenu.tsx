@@ -6,20 +6,23 @@ type CrewMember = {
 };
 
 type CrewMenuProps = {
-  crew: Record<string, CrewMember>;
+  crew: object;
+  isDefault: boolean | undefined;
 };
 
-const CrewMenu = ({ crew }: CrewMenuProps) => {
+const CrewMenu = ({ crew, isDefault }: CrewMenuProps) => {
   return (
     <nav className={crewStyles.crew__menuContainer}>
       <ul className={crewStyles.crew__menu}>
         {crew &&
-          Object.values(crew).map((member: CrewMember) => {
+          Object.values(crew).map((member: CrewMember, index) => {
             return (
               <li key={member.name}>
                 <NavLink
                   to={`/crew/${member.name}`}
-                  className={`${crewStyles.crew__menu__item} crewMenuItem`}
+                  className={`${crewStyles.crew__menu__item} crewMenuItem ${
+                    isDefault == true && index == 0 ? "active" : ""
+                  }`}
                 ></NavLink>
               </li>
             );

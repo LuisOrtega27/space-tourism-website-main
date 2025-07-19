@@ -1,4 +1,4 @@
-import { NavLink, useParams } from "react-router";
+import { useParams } from "react-router";
 import destination from "./PlanetShowcase.module.css";
 import { useContext, useEffect, useState } from "react";
 
@@ -6,19 +6,28 @@ import type { DataContextType } from "../../App";
 import { DataContext } from "../../App";
 import DestinationMenu from "../../components/destinationMenu/DestinationMenu";
 
-const PlanetShowcase = () => {
+const PlanetShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
   const params = useParams();
 
   const dataContext = useContext(DataContext) as DataContextType;
-  const [destinations, setDestinations] = useState();
+  const [destinations, setDestinations] = useState<
+    DataContextType["destination"]
+  >([]);
 
-  const [componenText, setComponenText] = useState(dataContext.destination) as {
-    name: string;
-    images: { png: string; webp: string };
-    description: string;
-    distance: string;
-    travel: string;
-  };
+  const [componenText, setComponenText] = useState<
+    | {
+        name: string;
+        images: { png: string; webp: string };
+        description: string;
+        distance: string;
+        travel: string;
+      }
+    | undefined
+  >(
+    Array.isArray(dataContext.destination)
+      ? dataContext.destination[0]
+      : dataContext.destination
+  );
 
   useEffect(() => {
     if (dataContext.destination == null) return;
@@ -47,7 +56,7 @@ const PlanetShowcase = () => {
       </div>
 
       <div className={destination.destination__infoWapper}>
-        <DestinationMenu destinations={destinations} />
+        <DestinationMenu destinations={destinations} isDefault={isDefault} />
 
         <h2 className={destination.destination__subtitle}>
           {componenText?.name}

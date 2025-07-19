@@ -11,7 +11,6 @@ const Home = () => {
 
   useEffect(() => {
     setData(translate);
-    console.log(data);
   }, [translate, data]);
 
   return (
