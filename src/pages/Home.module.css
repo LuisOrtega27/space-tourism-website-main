@@ -35,7 +35,7 @@
   }
 
   .home__buttonContainer {
-    @apply px-20 py-28 lg:p-0
+    @apply py-28 lg:p-0
     text-center 
     lg:grow 
     lg:order-2;
