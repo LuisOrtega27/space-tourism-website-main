@@ -71,7 +71,7 @@ function App() {
   return (
     <main
       className={`
-        ${nav}--background
+        ${nav == import.meta.env.BASE_URL ? "home" : nav}--background
         bg-cover
         bg-center
         min-h-screen
