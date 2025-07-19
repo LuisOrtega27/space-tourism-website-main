@@ -1,10 +1,11 @@
 import { useParams } from "react-router";
+import { useContext, useEffect, useState } from "react";
 
-import techStyles from "./Tech.module.css";
+import techStyles from "./TechShowcase.module.css";
 
 import type { DataContextType } from "../../App";
 import { DataContext } from "../../App";
-import { useContext, useEffect, useState } from "react";
+
 import TechMenu from "../../components/techMenu/TechMenu";
 
 const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {

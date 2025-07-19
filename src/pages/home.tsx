@@ -1,28 +1,29 @@
 import styles from "./Home.module.css";
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 
 import type { DataContextType } from "../App";
 import { DataContext } from "../App";
+import { useNavigate } from "react-router";
 
 const Home = () => {
-  const translate = useContext(DataContext) as DataContextType;
-
-  const [data, setData] = useState(translate);
-
-  useEffect(() => {
-    setData(translate);
-  }, [translate, data]);
+  const { home } = useContext(DataContext) as DataContextType;
+  const navigate = useNavigate();
 
   return (
     <main className={styles.home}>
-      <h3 className={styles.home__subTitle}>{data.home?.subTitle}</h3>
+      <h3 className={styles.home__subTitle}>{home?.subTitle}</h3>
 
-      <h1 className={styles.home__title}>{data.home?.title}</h1>
+      <h1 className={styles.home__title}>{home?.title}</h1>
 
-      <p className={styles.home__text}>{data.home?.text}</p>
+      <p className={styles.home__text}>{home?.text}</p>
 
       <div className={styles.home__buttonContainer}>
-        <button className={styles.home__button}>{data.home?.button}</button>
+        <button
+          className={styles.home__button}
+          onClick={() => navigate("destination")}
+        >
+          {home?.button}
+        </button>
       </div>
     </main>
   );

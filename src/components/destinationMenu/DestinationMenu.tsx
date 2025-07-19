@@ -1,6 +1,6 @@
 import { NavLink } from "react-router";
 
-import destination from "../../pages/destination/PlanetShowcase.module.css";
+import destination from "../../pages/destinationSub/PlanetShowcase.module.css";
 import { useEffect } from "react";
 
 type Destination = { name: string };

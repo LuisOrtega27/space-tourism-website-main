@@ -1,13 +1,18 @@
 import { NavLink } from "react-router";
-import techStyles from "../../pages/Technology/Tech.module.css";
-
-type TechnologyItem = {
-  name: string;
-  // add other properties if needed
-};
+import techStyles from "../../pages/TechnologySub/TechShowcase.module.css";
 
 type TechMenuProps = {
-  technology: Record<string, TechnologyItem>;
+  technology: Array<
+    | {
+        name: string;
+        images: {
+          portrait: string;
+          landscape: string;
+        };
+        description: string;
+      }
+    | undefined
+  >;
   isDefault: boolean | undefined;
 };
 
@@ -17,6 +22,7 @@ const TechMenu = ({ technology, isDefault }: TechMenuProps) => {
       <ul className={techStyles.tech__menu}>
         {technology &&
           Object.values(technology).map((tech, index) => {
+            if (!tech) return null;
             return (
               <li key={tech.name}>
                 <NavLink

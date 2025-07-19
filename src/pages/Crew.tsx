@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 
-import crew from "./crew/Crew.module.css";
+import crew from "./crewSub/Crew.module.css";
 
 const Crew = () => {
   return (

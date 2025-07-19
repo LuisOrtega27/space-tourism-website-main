@@ -37,13 +37,13 @@
   }
 
   .crew__menuContainer {
-    @apply lg:order-2;
+    @apply lg:flex lg:order-2;
   }
   .crew__menu {
-    @apply flex flex-row
-    justify-center lg:justify-start
+    @apply flex 
+    justify-center lg:justify-start lg:items-end
     gap-4
-    mb-8;
+    mb-8 lg:mb-0;
   }
   .crew__menu__item {
     @apply inline-block bg-figma-gray-300 w-2.5 aspect-square rounded-full;
@@ -51,7 +51,7 @@
   .crew__imgContainer {
     @apply relative 
     flex justify-center 
-    h-80 md:h-[463px] lg:h-full  
+    h-80 md:h-[463px] lg:h-[600px]  
     overflow-hidden
     lg:order-1
     lg:col-start-2

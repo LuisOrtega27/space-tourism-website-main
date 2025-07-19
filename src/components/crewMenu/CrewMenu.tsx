@@ -1,5 +1,5 @@
 import { NavLink } from "react-router";
-import crewStyles from "../../pages/crew/Crew.module.css";
+import crewStyles from "../../pages/crewSub/Crew.module.css";
 
 type CrewMember = {
   name: string;

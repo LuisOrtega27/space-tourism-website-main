@@ -6,13 +6,13 @@ import MenuMain from "./components/menu_main/MenuMain";
 import Home from "./pages/home";
 
 import Destination from "./pages/Destination";
-import PlanetShowcase from "./pages/destination/PlanetShowcase";
+import PlanetShowcase from "./pages/destinationSub/PlanetShowcase";
 
 import Crew from "./pages/Crew";
-import CrewShowcase from "./pages/crew/CrewShowcase";
+import CrewShowcase from "./pages/crewSub/CrewShowcase";
 
 import Technology from "./pages/Technology";
-import Tech from "./pages/technology/Tech";
+import Tech from "./pages/technologySub/TechShowcase";
 
 import PageNotFound from "./pages/PageNotFound";
 
@@ -23,7 +23,12 @@ export type NavContextType = {
 export const NavContext = createContext();
 
 export type DataContextType = {
-  home: object;
+  home: {
+    subTitle: string;
+    title: string;
+    text: string;
+    button: string;
+  };
   destination: Array<{
     name: string;
     images: { webp: string; png: string };

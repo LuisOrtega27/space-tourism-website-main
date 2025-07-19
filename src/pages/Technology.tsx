@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 
-import tech from "./technology/Tech.module.css";
+import tech from "./technologySub/TechShowcase.module.css";
 
 const Technology = () => {
   return (

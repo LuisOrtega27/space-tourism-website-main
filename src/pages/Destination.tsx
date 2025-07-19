@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 
-import destination from "./destination/PlanetShowcase.module.css";
+import destination from "./destinationSub/PlanetShowcase.module.css";
 
 const Destination = () => {
   return (
