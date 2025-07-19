@@ -1,9 +1,10 @@
-import styles from "./Home.module.css";
 import { useContext } from "react";
+import { useNavigate } from "react-router";
+
+import styles from "./Home.module.css";
 
 import type { DataContextType } from "../App";
 import { DataContext } from "../App";
-import { useNavigate } from "react-router";
 
 const Home = () => {
   const { home } = useContext(DataContext) as DataContextType;

@@ -7,14 +7,14 @@ import IconMenuClose from "../../assets/menu/IconMenuClose";
 
 import styles from "./MenuMain.module.css";
 
-import { NavContext } from "../../App";
-import type { NavContextType } from "../../App";
+import type { NavigationContextType } from "../../context/NavigationContext";
+import { NavigationContext } from "../../context/NavigationContext";
 
 import { DataContext } from "../../App";
 import type { DataContextType } from "../../App";
 
 const MenuMain = () => {
-  const navContext = useContext(NavContext) as NavContextType;
+  const navContext = useContext(NavigationContext) as NavigationContextType;
   const menuItems = useContext(DataContext) as DataContextType;
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,12 +43,6 @@ const MenuMain = () => {
           }`}
         >
           {Object.keys(menuItems).map((key, index) => {
-            console.log(
-              key == "home"
-                ? import.meta.env.BASE_URL
-                : import.meta.env.BASE_URL + key
-            );
-
             return (
               <li key={`${index}-${key}`}>
                 <NavLink

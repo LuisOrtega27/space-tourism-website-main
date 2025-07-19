@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useContext } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import MenuMain from "./components/menu_main/MenuMain";
@@ -16,11 +16,6 @@ import Tech from "./pages/technologySub/TechShowcase";
 
 import PageNotFound from "./pages/PageNotFound";
 
-export type NavContextType = {
-  nav: string;
-  setNav: React.Dispatch<React.SetStateAction<string>>;
-};
-export const NavContext = createContext();
 
 export type DataContextType = {
   home: {
@@ -52,11 +47,11 @@ export const DataContext = createContext();
 
 const URL = `${import.meta.env.BASE_URL}data/data.json`;
 
+
+import { NavigationContext } from "./context/NavigationContext";
+
 function App() {
-  const PATH_NAME = window.location.pathname;
-  const [nav, setNav] = useState(
-    PATH_NAME.split("/")[2] || `${import.meta.env.BASE_URL}`
-  );
+  const navigationContext = useContext(NavigationContext);
 
   const [data, setData] = useState({});
 
@@ -68,20 +63,37 @@ function App() {
       });
   }, []);
 
+  console.log(navigationContext);
+  console.log(
+    `${
+      navigationContext && // verificar si es NULL
+      navigationContext.nav == import.meta.env.BASE_URL
+        ? "home"
+        : navigationContext?.nav
+    }`
+  );
+
+  useEffect(() => {}, [navigationContext]);
+
   return (
     <main
       className={`
-        ${nav == import.meta.env.BASE_URL ? "home" : nav}--background
+        ${
+          navigationContext && // verificar si es NULL
+          navigationContext.nav == import.meta.env.BASE_URL
+            ? "home"
+            : navigationContext?.nav
+        }--background
         bg-cover
         bg-center
         min-h-screen
         `}
     >
       <BrowserRouter>
-        <DataContext value={data}>
-          <NavContext value={{ nav, setNav }}>
+        <DataContext.Provider value={data}>
+          <NavigationContext.Provider value={navigationContext}>
             <MenuMain />
-          </NavContext>
+          </NavigationContext.Provider>
 
           <Routes>
             <Route path={`${import.meta.env.BASE_URL}`} element={<Home />} />
