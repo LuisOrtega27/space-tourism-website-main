@@ -53,11 +53,12 @@ const MenuMain = () => {
                 <NavLink
                   to={
                     key == "home"
-                      ? `${import.meta.env.BASE_URL}`
-                      : `${import.meta.env.BASE_URL}${key}`
+                      ? import.meta.env.BASE_URL
+                      : import.meta.env.BASE_URL + key
                   }
                   onClick={() => navContext.setNav(key)}
                   className={styles.menuMain__item + " menuMainItem"}
+                  end={key == "home" ? true : false}
                 >
                   <span className="font-bold mr-2 inline md:hidden lg:inline">
                     0{index}

@@ -54,9 +54,7 @@ const URL = `${import.meta.env.BASE_URL}data/data.json`;
 
 function App() {
   const PATH_NAME = window.location.pathname;
-  const [nav, setNav] = useState(
-    PATH_NAME.split("/")[2] || `${import.meta.env.BASE_URL}`
-  );
+  const [nav, setNav] = useState(PATH_NAME.split("/")[2] || "home");
 
   const [data, setData] = useState({});
 
@@ -67,6 +65,8 @@ function App() {
         setData(data);
       });
   }, []);
+
+  console.log(nav);
 
   return (
     <main
