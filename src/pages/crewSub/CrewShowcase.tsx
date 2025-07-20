@@ -4,11 +4,11 @@ import { useContext, useEffect, useState } from "react";
 import crewStyles from "./Crew.module.css";
 import CrewMenu from "../../components/crewMenu/CrewMenu";
 
-import type { DataContextType } from "../../App";
-import { DataContext } from "../../App";
+import type { JsonDataContextType } from "../../context/JsonDataContext";
+import { JsonDataContext } from "../../context/JsonDataContext";
 
 const CrewShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
-  const { crew } = useContext(DataContext) as DataContextType;
+  const { crew } = useContext(JsonDataContext) as JsonDataContextType;
   const params = useParams();
 
   const [crewMember, setCrewMember] = useState<
@@ -25,7 +25,7 @@ const CrewShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
     if (crew == undefined) return;
 
     Object.values(crew).map((member) => {
-      if (member.name == params.integrant || member.name == crew[0].name)
+      if (member?.name == params.integrant || member?.name == crew[0].name)
         return setCrewMember(member);
     });
   }, [crew, params.integrant]);

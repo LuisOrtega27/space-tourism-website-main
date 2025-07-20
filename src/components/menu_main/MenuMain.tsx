@@ -7,21 +7,21 @@ import IconMenuClose from "../../assets/menu/IconMenuClose";
 
 import styles from "./MenuMain.module.css";
 
-import { NavContext } from "../../App";
-import type { NavContextType } from "../../App";
+import { NavigationContext } from "../../context/NavigationContext";
+import type { NavigationContextType } from "../../context/NavigationContext";
 
-import { DataContext } from "../../App";
-import type { DataContextType } from "../../App";
+import type { JsonDataContextType } from "../../context/JsonDataContext";
+import { JsonDataContext } from "../../context/JsonDataContext";
 
 const MenuMain = () => {
-  const navContext = useContext(NavContext) as NavContextType;
-  const dataContext = useContext(DataContext) as DataContextType;
+  const navContext = useContext(NavigationContext) as NavigationContextType;
+  const dataContext = useContext(JsonDataContext) as JsonDataContextType;
 
   const [menuItems, setMenuItems] = useState({});
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    setMenuItems(dataContext);
+    if (dataContext != null) setMenuItems(dataContext);
   }, [dataContext, menuItems]);
 
   return (
@@ -56,7 +56,9 @@ const MenuMain = () => {
                       ? import.meta.env.BASE_URL
                       : import.meta.env.BASE_URL + key
                   }
-                  onClick={() => navContext.setNav(key)}
+                  onClick={() => {
+                    if (navContext != null) navContext.setNav(key);
+                  }}
                   className={styles.menuMain__item + " menuMainItem"}
                   end={key == "home" ? true : false}
                 >

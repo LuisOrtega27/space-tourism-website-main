@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import MenuMain from "./components/menu_main/MenuMain";
@@ -16,39 +16,10 @@ import Tech from "./pages/technologySub/TechShowcase";
 
 import PageNotFound from "./pages/PageNotFound";
 
-export type NavContextType = {
-  nav: string;
-  setNav: React.Dispatch<React.SetStateAction<string>>;
-};
-export const NavContext = createContext();
+import { NavigationContext } from "./context/NavigationContext";
 
-export type DataContextType = {
-  home: {
-    subTitle: string;
-    title: string;
-    text: string;
-    button: string;
-  };
-  destination: Array<{
-    name: string;
-    images: { webp: string; png: string };
-    description: string;
-    distance: string;
-    travel: string;
-  }>;
-  crew: Array<{
-    name: string;
-    images: { webp: string; png: string };
-    role: string;
-    bio: string;
-  }>;
-  technology: Array<{
-    name: string;
-    images: { portrait: string; landscape: string };
-    description: string;
-  }>;
-};
-export const DataContext = createContext();
+import type { JsonDataContextType } from "./context/JsonDataContext";
+import { JsonDataContext } from "./context/JsonDataContext";
 
 const URL = `${import.meta.env.BASE_URL}data/data.json`;
 
@@ -56,7 +27,7 @@ function App() {
   const PATH_NAME = window.location.pathname;
   const [nav, setNav] = useState(PATH_NAME.split("/")[2] || "home");
 
-  const [data, setData] = useState({});
+  const [data, setData] = useState<JsonDataContextType>(null);
 
   useEffect(() => {
     fetch(URL)
@@ -65,8 +36,6 @@ function App() {
         setData(data);
       });
   }, []);
-
-  console.log(nav);
 
   return (
     <main
@@ -78,10 +47,10 @@ function App() {
         `}
     >
       <BrowserRouter>
-        <DataContext value={data}>
-          <NavContext value={{ nav, setNav }}>
+        <JsonDataContext value={data}>
+          <NavigationContext value={{ nav, setNav }}>
             <MenuMain />
-          </NavContext>
+          </NavigationContext>
 
           <Routes>
             <Route path={`${import.meta.env.BASE_URL}`} element={<Home />} />
@@ -109,7 +78,7 @@ function App() {
 
             <Route path="*" element={<PageNotFound />} />
           </Routes>
-        </DataContext>
+        </JsonDataContext>
       </BrowserRouter>
     </main>
   );

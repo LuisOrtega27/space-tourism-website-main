@@ -3,8 +3,8 @@ import { useContext, useEffect, useState } from "react";
 
 import techStyles from "./TechShowcase.module.css";
 
-import type { DataContextType } from "../../App";
-import { DataContext } from "../../App";
+import type { JsonDataContextType } from "../../context/JsonDataContext";
+import { JsonDataContext } from "../../context/JsonDataContext";
 
 import TechMenu from "../../components/techMenu/TechMenu";
 
@@ -21,7 +21,7 @@ const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {
     | undefined
   >();
 
-  const { technology } = useContext(DataContext) as DataContextType;
+  const { technology } = useContext(JsonDataContext) as JsonDataContextType;
 
   const params = useParams();
 

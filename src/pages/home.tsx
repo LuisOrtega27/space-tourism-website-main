@@ -3,27 +3,28 @@ import { useNavigate } from "react-router";
 
 import styles from "./Home.module.css";
 
-import type { DataContextType } from "../App";
-import { DataContext } from "../App";
+import type { JsonDataContextType } from "../context/JsonDataContext";
+import { JsonDataContext } from "../context/JsonDataContext";
 
 const Home = () => {
-  const { home } = useContext(DataContext) as DataContextType;
+  const textContext = useContext(JsonDataContext) as JsonDataContextType;
+
   const navigate = useNavigate();
 
   return (
     <main className={styles.home}>
-      <h3 className={styles.home__subTitle}>{home?.subTitle}</h3>
+      <h3 className={styles.home__subTitle}>{textContext?.home?.subTitle}</h3>
 
-      <h1 className={styles.home__title}>{home?.title}</h1>
+      <h1 className={styles.home__title}>{textContext?.home?.title}</h1>
 
-      <p className={styles.home__text}>{home?.text}</p>
+      <p className={styles.home__text}>{textContext?.home?.text}</p>
 
       <div className={styles.home__buttonContainer}>
         <button
           className={styles.home__button}
           onClick={() => navigate(`${import.meta.env.BASE_URL}destination`)}
         >
-          {home?.button}
+          {textContext?.home?.button}
         </button>
       </div>
     </main>

@@ -2,17 +2,16 @@ import { useParams } from "react-router";
 import destination from "./PlanetShowcase.module.css";
 import { useContext, useEffect, useState } from "react";
 
-import type { DataContextType } from "../../App";
-import { DataContext } from "../../App";
+import type { JsonDataContextType } from "../../context/JsonDataContext";
+import { JsonDataContext } from "../../context/JsonDataContext";
+
 import DestinationMenu from "../../components/destinationMenu/DestinationMenu";
 
 const PlanetShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
   const params = useParams();
 
-  const dataContext = useContext(DataContext) as DataContextType;
-  const [destinations, setDestinations] = useState<
-    DataContextType["destination"]
-  >([]);
+  const dataContext = useContext(JsonDataContext) as JsonDataContextType;
+  const [destinations, setDestinations] = useState<JsonDataContextType>();
 
   const [componenText, setComponenText] = useState<
     | {
@@ -24,19 +23,19 @@ const PlanetShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
       }
     | undefined
   >(
-    Array.isArray(dataContext.destination)
-      ? dataContext.destination[0]
-      : dataContext.destination
+    Array.isArray(dataContext?.destination)
+      ? dataContext?.destination[0]
+      : dataContext?.destination
   );
 
   useEffect(() => {
-    if (dataContext.destination == null) return;
+    if (dataContext?.destination == null) return;
     const destinationsArray = Object.values(dataContext?.destination);
     setDestinations(destinationsArray);
   }, [dataContext]);
 
   useEffect(() => {
-    if (dataContext.destination == null) return;
+    if (dataContext?.destination == null) return;
 
     dataContext?.destination.map((item) => {
       if (item.name == params.destiny || item.name == "Moon") {
