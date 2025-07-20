@@ -9,30 +9,17 @@ import { JsonDataContext } from "../../context/JsonDataContext";
 import TechMenu from "../../components/techMenu/TechMenu";
 
 const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {
-  const [tech, setTech] = useState<
-    | {
-        name: string;
-        images: {
-          portrait: string;
-          landscape: string;
-        };
-        description: string;
-      }
-    | undefined
-  >();
-
-  const { technology } = useContext(JsonDataContext) as JsonDataContextType;
-
+  const textContext = useContext(JsonDataContext) as JsonDataContextType;
   const params = useParams();
+  const [techPosition, setTechPosition] = useState(0);
 
   useEffect(() => {
-    if (technology == undefined) return;
-
-    technology.forEach((tech) => {
-      if (tech.name == params.tech || tech.name == "Launch vehicle")
-        setTech(tech);
+    textContext?.technology.map((tech, index) => {
+      if (params.techName == tech.name) {
+        setTechPosition(index);
+      }
     });
-  }, [technology, params.tech]);
+  }, [textContext?.technology, params.techName]);
 
   return (
     <>
@@ -40,32 +27,45 @@ const Tech = ({ isDefault }: { isDefault?: boolean | undefined }) => {
         <picture>
           <source
             media="(width >= 1440px)"
-            srcSet={`${import.meta.env.BASE_URL}${tech?.images?.portrait}`}
+            srcSet={`${import.meta.env.BASE_URL}${
+              textContext?.technology[techPosition]?.images?.portrait
+            }`}
           />
 
           <source
             media="(width >= 1440px)"
-            srcSet={`${import.meta.env.BASE_URL}${tech?.images?.landscape}`}
+            srcSet={`${import.meta.env.BASE_URL}${
+              textContext?.technology[techPosition]?.images?.landscape
+            }`}
           />
 
           <img
             className={techStyles.tech__img}
-            src={`${import.meta.env.BASE_URL}${tech?.images?.portrait}`}
+            src={`${import.meta.env.BASE_URL}${
+              textContext?.technology[techPosition]?.images?.portrait
+            }`}
             alt="Technology"
           />
         </picture>
       </div>
 
       <div className={techStyles.tech__infoContainer}>
-        <TechMenu technology={technology} isDefault={isDefault} />
+        <TechMenu
+          technology={textContext?.technology ?? null}
+          isDefault={isDefault}
+        />
 
         <div>
           <h3 className={techStyles.tech__info__subtitle}>
             The terminology...
           </h3>
-          <h2 className={techStyles.tech__info__name}>{tech?.name}</h2>
+          <h2 className={techStyles.tech__info__name}>
+            {textContext?.technology[techPosition]?.name}
+          </h2>
 
-          <p className={techStyles.tech__info__tech}>{tech?.description}</p>
+          <p className={techStyles.tech__info__tech}>
+            {textContext?.technology[techPosition]?.description}
+          </p>
         </div>
       </div>
     </>

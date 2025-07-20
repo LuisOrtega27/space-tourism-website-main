@@ -73,7 +73,7 @@ function App() {
               element={<Technology />}
             >
               <Route index element={<Tech isDefault />} />
-              <Route path=":tech" element={<Tech />} />
+              <Route path=":techName" element={<Tech />} />
             </Route>
 
             <Route path="*" element={<PageNotFound />} />

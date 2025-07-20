@@ -2,17 +2,14 @@ import { NavLink } from "react-router";
 import techStyles from "../../pages/TechnologySub/TechShowcase.module.css";
 
 type TechMenuProps = {
-  technology: Array<
-    | {
-        name: string;
-        images: {
-          portrait: string;
-          landscape: string;
-        };
-        description: string;
-      }
-    | undefined
-  >;
+  technology: Array<{
+    name: string;
+    images: {
+      portrait: string;
+      landscape: string;
+    };
+    description: string;
+  }> | null;
   isDefault: boolean | undefined;
 };
 
