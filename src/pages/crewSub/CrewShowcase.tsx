@@ -8,44 +8,48 @@ import type { JsonDataContextType } from "../../context/JsonDataContext";
 import { JsonDataContext } from "../../context/JsonDataContext";
 
 const CrewShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
-  const { crew } = useContext(JsonDataContext) as JsonDataContextType;
+  const textContext = useContext(JsonDataContext) as JsonDataContextType;
   const params = useParams();
 
-  const [crewMember, setCrewMember] = useState<
-    | {
-        name: string;
-        images: { webp: string; png: string };
-        role: string;
-        bio: string;
-      }
-    | undefined
-  >(undefined);
+  const [crewMemberPosition, setCrewMemberPosition] = useState(0);
 
   useEffect(() => {
-    if (crew == undefined) return;
-
-    Object.values(crew).map((member) => {
-      if (member?.name == params.integrant || member?.name == crew[0].name)
-        return setCrewMember(member);
+    textContext?.crew.map((member, index) => {
+      if (params.memberName == member.name) setCrewMemberPosition(index);
     });
-  }, [crew, params.integrant]);
+  }, [textContext?.crew, params.memberName]);
 
   return (
     <>
       <div className={crewStyles.crew__infoContainer}>
-        <h3 className={crewStyles.crew__info__rank}>{crewMember?.role}</h3>
-        <h2 className={crewStyles.crew__info__name}>{crewMember?.name}</h2>
+        <h3 className={crewStyles.crew__info__rank}>
+          {textContext?.crew[crewMemberPosition]?.role}
+        </h3>
+        <h2 className={crewStyles.crew__info__name}>
+          {textContext?.crew[crewMemberPosition]?.name}
+        </h2>
 
-        <p className={crewStyles.crew__info__text}>{crewMember?.bio}</p>
+        <p className={crewStyles.crew__info__text}>
+          {textContext?.crew[crewMemberPosition]?.bio}
+        </p>
       </div>
 
-      <CrewMenu crew={crew} isDefault={isDefault} />
+      <CrewMenu
+        crew={
+          textContext?.crew
+            ? textContext.crew.map((member) => ({ name: member.name }))
+            : null
+        }
+        isDefault={isDefault}
+      />
 
       <div className={crewStyles.crew__imgContainer}>
         <img
           className={crewStyles.crew__img}
-          src={`${import.meta.env.BASE_URL}${crewMember?.images.webp}`}
-          alt={crewMember?.name}
+          src={`${import.meta.env.BASE_URL}${
+            textContext?.crew[crewMemberPosition]?.images.webp
+          }`}
+          alt={textContext?.crew[crewMemberPosition]?.name}
         />
       </div>
     </>

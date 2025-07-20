@@ -6,7 +6,9 @@ type CrewMember = {
 };
 
 type CrewMenuProps = {
-  crew: object;
+  crew: Array<{
+    name: string;
+  }> | null;
   isDefault: boolean | undefined;
 };
 

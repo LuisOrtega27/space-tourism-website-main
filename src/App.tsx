@@ -65,7 +65,7 @@ function App() {
 
             <Route path={`${import.meta.env.BASE_URL}crew`} element={<Crew />}>
               <Route index element={<CrewShowcase isDefault />} />
-              <Route path={":integrant"} element={<CrewShowcase />} />
+              <Route path={":memberName"} element={<CrewShowcase />} />
             </Route>
 
             <Route
