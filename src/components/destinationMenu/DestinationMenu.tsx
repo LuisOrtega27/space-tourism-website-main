@@ -1,12 +1,11 @@
 import { NavLink } from "react-router";
 
 import destination from "../../pages/destinationSub/PlanetShowcase.module.css";
-import { useEffect } from "react";
 
 type Destination = { name: string };
 
 interface DestinationMenuProps {
-  destinations: Destination[];
+  destinations: Destination[] | null;
   isDefault: boolean | undefined;
 }
 
@@ -14,8 +13,6 @@ const DestinationMenu: React.FC<DestinationMenuProps> = ({
   destinations,
   isDefault,
 }) => {
-  useEffect(() => {}, []);
-
   return (
     <nav>
       <ul className={destination.destination__menu}>

@@ -1,5 +1,5 @@
 import { useParams } from "react-router";
-import destination from "./PlanetShowcase.module.css";
+import destinationStyles from "./PlanetShowcase.module.css";
 import { useContext, useEffect, useState } from "react";
 
 import type { JsonDataContextType } from "../../context/JsonDataContext";
@@ -8,74 +8,60 @@ import { JsonDataContext } from "../../context/JsonDataContext";
 import DestinationMenu from "../../components/destinationMenu/DestinationMenu";
 
 const PlanetShowcase = ({ isDefault }: { isDefault?: boolean | undefined }) => {
+  const textContext = useContext(JsonDataContext) as JsonDataContextType;
   const params = useParams();
 
-  const dataContext = useContext(JsonDataContext) as JsonDataContextType;
-  const [destinations, setDestinations] = useState<JsonDataContextType>();
-
-  const [componenText, setComponenText] = useState<
-    | {
-        name: string;
-        images: { png: string; webp: string };
-        description: string;
-        distance: string;
-        travel: string;
-      }
-    | undefined
-  >(
-    Array.isArray(dataContext?.destination)
-      ? dataContext?.destination[0]
-      : dataContext?.destination
-  );
+  const [destinationPosition, setDestinationPosition] = useState(0);
 
   useEffect(() => {
-    if (dataContext?.destination == null) return;
-    const destinationsArray = Object.values(dataContext?.destination);
-    setDestinations(destinationsArray);
-  }, [dataContext]);
-
-  useEffect(() => {
-    if (dataContext?.destination == null) return;
-
-    dataContext?.destination.map((item) => {
-      if (item.name == params.destiny || item.name == "Moon") {
-        setComponenText(item);
+    textContext?.destination.map((planet, index) => {
+      if (params.destiny == planet.name) {
+        setDestinationPosition(index);
       }
     });
-  }, [dataContext, params.destiny]);
+  }, [textContext, params]);
 
   return (
     <>
-      <div className={destination.destination__imgContainer}>
+      <div className={destinationStyles.destination__imgContainer}>
         <img
-          className={destination.destination__img}
-          src={`${import.meta.env.BASE_URL}/.${componenText?.images?.webp}`}
-          alt={componenText?.name}
+          className={destinationStyles.destination__img}
+          src={`${import.meta.env.BASE_URL}/.${
+            textContext?.destination[destinationPosition].images?.webp
+          }`}
+          alt={textContext?.destination[destinationPosition].name}
         />
       </div>
 
-      <div className={destination.destination__infoWapper}>
-        <DestinationMenu destinations={destinations} isDefault={isDefault} />
+      <div className={destinationStyles.destination__infoWapper}>
+        <DestinationMenu
+          destinations={textContext?.destination ?? null}
+          isDefault={isDefault}
+        />
 
-        <h2 className={destination.destination__subtitle}>
-          {componenText?.name}
+        <h2 className={destinationStyles.destination__subtitle}>
+          {textContext?.destination[destinationPosition].name}
         </h2>
 
-        <p className={destination.destination__text}>
-          {componenText?.description}
+        <p className={destinationStyles.destination__text}>
+          {textContext?.destination[destinationPosition].description}
         </p>
 
-        <hr className={destination.destination__separator} />
+        <hr className={destinationStyles.destination__separator} />
 
-        <div className={destination.destination__info}>
+        <div className={destinationStyles.destination__info}>
           <div>
-            <h3 className={destination.info__title}>Avg. distance</h3>
-            <p className={destination.info__text}>{componenText?.distance}</p>
+            <h3 className={destinationStyles.info__title}>Avg. distance</h3>
+            <p className={destinationStyles.info__text}>
+              {textContext?.destination[destinationPosition].distance}
+            </p>
           </div>
 
           <div>
-            <p className={destination.info__title}>travel time</p>
-            <h3 className={destination.info__text}>{componenText?.travel}</h3>
+            <p className={destinationStyles.info__title}>travel time</p>
+            <h3 className={destinationStyles.info__text}>
+              {textContext?.destination[destinationPosition].travel}
+            </h3>
           </div>
         </div>
       </div>
